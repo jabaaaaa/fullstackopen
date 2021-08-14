@@ -10,7 +10,6 @@ import React, { useState } from 'react'
     )
   }
 
-  // TODO - why new line between p?
   const Statistics = ({good, neutral, bad}) => {
     const all = good + neutral + bad
 
@@ -39,6 +38,12 @@ import React, { useState } from 'react'
     );
   }
 
+  const Button = ({handleClick, text}) => {
+    return (
+      <button onClick={handleClick}>{text}</button>
+    )
+  }
+
 const App = () => {
   // save clicks of each button to its own state
   const [good, setGood] = useState(0)
@@ -60,9 +65,9 @@ const App = () => {
   return (
     <div>
       <h1>give feedback</h1>
-      <button onClick={goodClicked}>good</button>
-      <button onClick={neutralClicked}>neutral</button>
-      <button onClick={badClicked}>bad</button>
+      <Button handleClick={() => goodClicked()} text="good" />
+      <Button handleClick={() => neutralClicked()} text="neutral" />
+      <Button handleClick={() => badClicked()} text="bad" />
 
       <h2>Statistics</h2>
       <Statistics good={good} neutral={neutral} bad={bad} />
