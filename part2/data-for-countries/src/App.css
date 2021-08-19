@@ -40,3 +40,7 @@
 #flagImage {
   height: 150px;
 }
+
+body {
+  background-image: url("./images/pexels-francesco-ungaro-281260.jpg");
+ }

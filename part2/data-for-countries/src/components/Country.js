@@ -8,7 +8,7 @@ const Country = ({name, capital, languages, population, flag}) => {
             <h1>{name}</h1>
             <p>capital {capital}</p>
             <p>population {population}</p>
-            <h2>languages</h2>
+            <h2>Spoken languages</h2>
             {languages.map(data => 
             <li key={data.name}>{data.name}</li>
             )}
