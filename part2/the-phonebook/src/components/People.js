@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Number from './number'
+import Person from './Person'
 
-const Numbers = ({persons, newSearch}) => {
+const People = ({persons, newSearch, deletePerson}) => {
     return (
         <>
             {persons
@@ -9,16 +9,18 @@ const Numbers = ({persons, newSearch}) => {
                person.name.toLowerCase().includes(
                newSearch.toLowerCase()))
             .map(person => 
-               <Number 
-                 key={person.name} 
+               <Person 
+                 key={person.name}
+                 id={person.id} 
                  name={person.name} 
                  number={person.number}
+                 deletePerson={deletePerson}
                />
             )}
         </>
     )
 }
 
-export default Numbers
+export default People
 
 
