@@ -4,6 +4,7 @@ import Country from './Country'
 import Weather from './Weather'
 
 const MAX_COUNTRIES_DISPLAYED = 10
+const WEATHER_API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
 const DisplayCountries = ({filteredCountryData}) => {
     
@@ -17,7 +18,7 @@ const DisplayCountries = ({filteredCountryData}) => {
     useEffect(() => {
         if (countries.length !== 0) {
             let weatherRequest = axios
-                .get(`http://api.openweathermap.org/data/2.5/weather?q=${countries[0].capital}&appid=5447fbdda2013cf1b1780515a3b99ce5`)
+                .get(`http://api.openweathermap.org/data/2.5/weather?q=${countries[0].capital}&appid=${WEATHER_API_KEY}`)
                 .then(response=> {
                     setWeather(response.data)
                 })
@@ -51,7 +52,6 @@ const DisplayCountries = ({filteredCountryData}) => {
             </>
 
         )
-    
     } else {
         return (
             <>
