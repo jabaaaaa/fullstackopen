@@ -7,7 +7,6 @@ const getAll = () => {
 }
 
 const create = newObject => {
-    console.log("joo");
     const request = axios.post(baseUrl, newObject)
     return request.then(response => response.data)
 }
@@ -18,7 +17,6 @@ const deleteObject = id => {
 }
 
 const update = (id, newObject) => {
-    console.log("update", newObject, id);
     const request = axios.put(`${baseUrl}/${id}`, newObject)
     return request.then(response => response.data)
 }
