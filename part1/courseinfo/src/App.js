@@ -10,6 +10,7 @@ const Header = (props) => {
 
 const Content = (props) => {
   return (
+    // map + erillinen component voisi olla parempi, jos alkioita on monta
   <div>
     <p>{props.parts[0].name} {props.parts[0].exercises}</p>
     <p>{props.parts[1].name} {props.parts[1].exercises}</p>
@@ -20,6 +21,7 @@ const Content = (props) => {
 
 const Total = (props) => {
   return (
+    // käytä reduce
   <div>
     <p>Total number of exercises: {props.parts[0].exercises + 
     props.parts[1].exercises + props.parts[2].exercises}</p>
