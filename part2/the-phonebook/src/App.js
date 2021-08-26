@@ -3,7 +3,7 @@ import axios from 'axios'
 import AddPerson from './components/addPerson'
 import People from './components/People'
 import SearchPerson from './components/searchPerson'
-import peopleService from './services/modifyPeople'
+import peopleService from './services/persons'
 import Notification from './components/Notification'
 
 const App = () => {
@@ -46,22 +46,22 @@ const App = () => {
 
       if (updateNumber) {
         peopleService
-        .update(findPerson.id, newPersonObject)
-        .then(returnedPerson => {
-          setPeople(
-            people.map(person =>
-              person.id !== findPerson.id ? person : returnedPerson
+          .update(findPerson.id, newPersonObject)
+          .then(returnedPerson => {
+            setPeople(
+              people.map(person =>
+                person.id !== findPerson.id ? person : returnedPerson
+              )
             )
-          )
-          setNotification(
-            {message: `${newPersonObject.name}'s number was updated`,
-            color: 'green', backgroundColor: '#dcedc8'})
-        })
-        .catch(error => {
-          setNotification(
-            {message: `Information of ${newPersonObject.name} has already been removed from server`,
-            color: 'red', backgroundColor: 'mistyrose'})
-        })
+            setNotification(
+              {message: `${newPersonObject.name}'s number was updated`,
+              color: 'green', backgroundColor: '#dcedc8'})
+          })
+          .catch(error => {
+            setNotification(
+              {message: error.response.data.error,
+              color: 'red', backgroundColor: 'mistyrose'})
+          })
       }
     // if person is not added, add new person + number
     } else {
@@ -75,7 +75,7 @@ const App = () => {
           })
           .catch(error => {
             setNotification(
-              {message: `${newPersonObject.name} could not be added to server`,
+              {message: error.response.data.error,
               color: 'red', backgroundColor: 'mistyrose'})
           })
     }
